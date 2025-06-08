@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: roque-17032006
+      POSTGRES_DB: sentimentos
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:roque-17032006@db:5432/sentimentos
+      MODEL_URL: "https://drive.google.com/uc?id=1sZUyNWTUKxEZIQvKp1o8dWOZiLVKRbSe"
+      API_KEY: minha_chave_super_secreta
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+volumes:
+  pgdata:

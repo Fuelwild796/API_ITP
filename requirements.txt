@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pydantic
+numpy
+tensorflow
+transformers
+gdown
+python-dotenv
+sqlalchemy
+psycopg2-binary
+python-multipart
+alembic
+pandas
